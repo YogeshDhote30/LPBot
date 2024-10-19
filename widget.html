@@ -1,180 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Search</title>
-    <style>
-        /* General Styling */
-        * {
+    <title>MOVIE SEARCH</title>
+   <style>
+        /* General Body Styles */
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: #f4f7fa;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            max-width: 700px;
-            width: 100%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f4f4f4;
             text-align: center;
         }
 
-        h1 {
-            color: #2b57e7;
-            margin-bottom: 30px;
-            font-size: 2.5rem;
+        /* Header Section */
+        .first {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .first h1 {
+            margin: 0;
+            font-size: 36px;
         }
 
-        .search-container {
-            display: flex;
-            justify-content: space-between;
+        /* Search Container */
+        .container {
+            padding: 20px;
+        }
+
+        /* Search Input Field */
+        input[type="search"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             margin-bottom: 20px;
         }
 
-        input[type="search"] {
-            padding: 10px 15px;
-            width: 70%;
-            border-radius: 25px;
-            border: 2px solid #2b57e7;
-            font-size: 16px;
-            outline: none;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-
+        /* Buttons */
         button {
-            background-color: #2b57e7;
+            padding: 10px 20px;
+            background-color: #333;
             color: white;
             border: none;
-            border-radius: 25px;
-            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
+            margin: 5px;
         }
 
         button:hover {
-            background-color: #2149b5;
+            background-color: #555;
         }
 
-        .send-button {
-            background-color: #e73b2b;
-        }
-
-        .send-button:hover {
-            background-color: #c52e1f;
-        }
-
-        /* Info Sections */
-        .info-section {
+        /* Movie Data Sections */
+        .second, .Third, .Fourth {
             margin-top: 30px;
         }
 
-        .info-item {
-            margin-bottom: 20px;
+        /* Section Titles */
+        h2 {
+            font-size: 24px;
+            color: #333;
         }
 
-        .info-item h2 {
+        /* Data Divs */
+        .div2, .div3, .div4 {
             font-size: 20px;
-            color: #2b57e7;
-            margin-bottom: 5px;
-        }
-
-        .info-item p {
-            font-size: 18px;
             color: #555;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            display: inline-block;
+            width: 80%;
+            margin: 10px auto;
         }
-
-        /* Responsive Styling */
-        @media screen and (max-width: 768px) {
-            .search-container {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            input[type="search"], .button-container {
-                width: 100%;
-            }
-
-            .button-container {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Search for a Movie</h1>
-        
-        <div class="search-container">
-            <input type="search" placeholder="Enter movie title..." id="mySearch">
-        </div>
+<!-- MOVIE SEARCH HEADER -->
+<div class="first">
+  <h1>MOVIE SEARCH</h1>
+</div>
 
-        <div class="button-container">
-            <button onclick="myFunction()">Search</button>
-            <button class="send-button" onclick="sendFunction()">Send</button>
-        </div>
+<!-- SEARCH CONTAINER -->
+<div class="container">
+  <form class="third">
+    <!-- SEARCH INPUT -->
+    <p>
+      <input type="search" placeholder="Search.." id="mySearch" name="search">
+    </p>
+    <!-- BUTTONS: SEARCH AND SEND -->
+    <p>
+      <button type="button" onclick="searchFunction()">Search</button>
+      <button type="button" onclick="sendFunction()">Send</button>
+    </p>
+  </form>
+</div>
 
-        <div class="info-section">
-            <!-- Movie Title -->
-            <div class="info-item">
-                <h2>Title:</h2>
-                <p id="title">N/A</p>
-            </div>
+<!-- MOVIE TITLE SECTION -->
+<div class="second">
+    <h2>TITLE</h2>
+    <div id="title" class="div2"></div>
+</div>
 
-            <!-- Release Date -->
-            <div class="info-item">
-                <h2>Released:</h2>
-                <p id="released">N/A</p>
-            </div>
+<!-- MOVIE RELEASED SECTION -->
+<div class="Third">
+    <h2>RELEASED</h2>
+    <div id="released" class="div3"></div>
+</div>
 
-            <!-- Director -->
-            <div class="info-item">
-                <h2>Director:</h2>
-                <p id="director">N/A</p>
-            </div>
+<!-- MOVIE DIRECTOR SECTION -->
+<div class="Fourth">
+    <h2>DIRECTOR</h2>
+    <div id="director" class="div4"></div>
+</div>
 
-            <!-- Actors -->
-            <div class="info-item">
-                <h2>Actors:</h2>
-                <p id="Actors">N/A</p>
-            </div>
-
-            <!-- Genre -->
-            <div class="info-item">
-                <h2>Genre:</h2>
-                <p id="Genre">N/A</p>
-            </div>
-
-            <!-- IMDb Rating -->
-            <div class="info-item">
-                <h2>IMDb Rating:</h2>
-                <p id="imdbRating">N/A</p>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
