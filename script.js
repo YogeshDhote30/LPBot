@@ -32,9 +32,11 @@ function sendFunction() {
     let title = document.getElementById("title").innerHTML;
     let released = document.getElementById("released").innerHTML;
     let director = document.getElementById("director").innerHTML;
+    let Actors = document.getElementById("Actors").innerHTML;
+
 
     // Push the data (to an agentSDK or console)
-    pushData(title, released, director);
+    pushData(title, released, director, Actors);
 }
 
 // Fetch movie data from the OMDB API
@@ -52,11 +54,12 @@ async function getapi() {
     document.getElementById("title").innerHTML = data.Title || "N/A";
     document.getElementById("released").innerHTML = data.Released || "N/A";
     document.getElementById("director").innerHTML = data.Director || "N/A";
+    document.getElementById("Actors").innerHTML = data.Actors || "N/A";
 }
 
 // Push data to the agentSDK or any other system
 function pushData(title, released, director) {
-    console.log("Pushing data:", title, released, director);
+    console.log("Pushing data:", title, released, director, Actors);
     
     var notificationHandler = function(data) {
         // Handle notifications
@@ -76,7 +79,7 @@ function pushData(title, released, director) {
 
     // Command to send the data (simulated here)
     var cmdName = lpTag.agentSDK.cmdNames.write;
-    var data = { text: `Title: ${title}\nReleased: ${released}\nDirector: ${director}` };
+    var data = { text: `Title: ${title}\nReleased: ${released}\nDirector: ${director}\nActors: ${Actors}` };
     console.log("Command data:", data);
 
     // Simulate sending the data
