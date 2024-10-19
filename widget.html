@@ -1,69 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Search Movie Widget</title>
-<style>
-body {
-font-family: Arial, sans-serif;
-background-color: #f0f0f0;
-margin: 0;
-padding: 0;
-}
-#movie-info-widget {
-width: 600px;
-margin: 50px auto;
-padding: 20px;
-background-color: #fff;
-border-radius: 8px;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-text-align: center;
-}
-#movie-info-widget img {
-max-width: 100%;
-height: auto;
-border-radius: 8px;
-}
-#movie-info-widget h2 {
-color: #333;
-}
-#movie-info-widget p {
-color: #555;
-line-height: 1.5;
-}
-#search-form {
-margin-bottom: 20px;
-}
-#search-form input {
-padding: 10px;
-width: 80%;
-border: 1px solid #ddd;
-border-radius: 4px;
-}
-#search-form button {
-padding: 10px 20px;
-background-color: #007bff;
-color: #fff;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+    <style>
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fa;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #2b57e7;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="search"] {
+            padding: 10px 15px;
+            width: 70%;
+            border-radius: 25px;
+            border: 2px solid #2b57e7;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            background-color: #2b57e7;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2149b5;
+        }
+
+        /* Info Sections */
+        .info-section {
+            margin-top: 30px;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+        }
+
+        .info-item h2 {
+            font-size: 20px;
+            color: #2b57e7;
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .movie-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        /* Responsive Styling */
+        @media screen and (max-width: 768px) {
+            .search-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            input[type="search"], button {
+                width: 100%;
+            }
+
+            .movie-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+    </style>
 </head>
 <body>
 
-<div id="movie-info-widget">
-<form id="search-form">
-<input type="text" id="movie-name" placeholder="Please enter the name of a Movie" required>
-<button type="submit">Search</button>
-</form>
-<div id="movie-details">
-<!-- Movie info will be populated here -->
-</div>
-</div>
+    <div class="container">
+        <h1>Search for a Movie</h1>
+        
+        <div class="search-container">
+            <input type="search" placeholder="Enter movie title..." id="mySearch">
+            <button onclick="myFunction()">Search</button>
+        </div>
 
-<script src="script.js">  
-</script> 
+        <div class="info-section">
+            <!-- Movie Title -->
+            <div class="info-item">
+                <h2>Title:</h2>
+                <p id="title"></p>
+            </div>
+
+            <!-- Release Date -->
+            <div class="info-item">
+                <h2>Released:</h2>
+                <p id="released"></p>
+            </div>
+
+            <!-- Director -->
+            <div class="info-item">
+                <h2>Director:</h2>
+                <p id="director"></p>
+            </div>
+
+            <!-- Actors -->
+            <div class="info-item">
+                <h2>Actors:</h2>
+                <p id="Actors"></p>
+            </div>
+
+            <!-- Genre -->
+            <div class="info-item">
+                <h2>Genre:</h2>
+                <p id="Genre"></p>
+            </div>
+
+            <!-- IMDb Rating -->
+            <div class="info-item">
+                <h2>IMDb Rating:</h2>
+                <p id="imdbRating"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
