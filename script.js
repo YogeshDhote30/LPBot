@@ -125,9 +125,21 @@ async function getapi() {
     
 }
 
+function sendFunction() {
+    // Get the stored movie details from the UI
+    var title = document.getElementById("title").innerHTML;
+    var released = document.getElementById("released").innerHTML;
+    var director = document.getElementById("director").innerHTML;
+    var Actors = document.getElementById("Actors").innerHTML;
+    var Genre = document.getElementById("Genre").innerHTML;
+    var imdbRating = document.getElementById("imdbRating").innerHTML;
+console.log("Data send");    
+    // Send the data using pushData
+    pushData(title,released,director,Actors,Genre,imdbRating);
+}
 
 
-function pushData(title,released,director,Actors,Genre,imdbRating,poster){
+function pushData(title,released,director,Actors,Genre,imdbRating){
 
     {
         var notificationHandler = function(data) {
@@ -153,7 +165,7 @@ function pushData(title,released,director,Actors,Genre,imdbRating,poster){
         };
     
         var cmdName = lpTag.agentSDK.cmdNames.write; // = "Write ChatLine"
-        var data = {text: "Title : "+title+"\nReleased : "+released+"\nDirector : "+director+"\nActors : "+Actors+"\nGenre : "+Genre+"\nimdbRating : "+imdbRating+"\nposter : "+poster};
+        var data = {text: "Title : "+title+"\nReleased : "+released+"\nDirector : "+director+"\nActors : "+Actors+"\nGenre : "+Genre+"\nimdbRating : "+imdbRating};
         console.log(data);
     
         lpTag.agentSDK.command(cmdName, data, notifyWhenDone);
